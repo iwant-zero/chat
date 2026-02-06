@@ -1,0 +1,11 @@
+{
+  "name": "lotto-frequency-recommender",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "update": "node scripts/update-lotto.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
