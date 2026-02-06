@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>빈도 기반 로또 추천기 (GitHub Pages)</title>
+  <link rel="stylesheet" href="./assets/style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <div>
+        <h1>빈도 기반 로또 추천기</h1>
+        <p class="sub">
+          역대 1등 당첨번호(누적 데이터)에서 출현 빈도를 계산해 <b>가중 랜덤</b>으로 추천합니다.
+          (세트는 매번 달라질 수 있음)
+        </p>
+      </div>
+
+      <div class="meta">
+        <div class="meta-box">
+          <div class="meta-label">누적 회차</div>
+          <div class="meta-value" id="metaDraws">-</div>
+        </div>
+        <div class="meta-box">
+          <div class="meta-label">업데이트</div>
+          <div class="meta-value" id="metaUpdated">-</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="controls">
+      <div class="btn-row">
+        <button class="btn primary" id="btnGen5">5세트 생성</button>
+        <button class="btn primary" id="btnGen10">10세트 생성</button>
+        <button class="btn" id="btnReroll">같은 설정으로 다시</button>
+      </div>
+
+      <div class="toggles">
+        <label class="toggle">
+          <input type="checkbox" id="chkUniqueBetweenSets" checked />
+          <span>세트 간 중복 최소화(약)</span>
+        </label>
+        <label class="toggle">
+          <input type="checkbox" id="chkIncludeBonus" />
+          <span>보너스 번호도 빈도에 포함</span>
+        </label>
+      </div>
+
+      <div class="legend">
+        <span class="chip c1">1–10</span>
+        <span class="chip c2">11–20</span>
+        <span class="chip c3">21–30</span>
+        <span class="chip c4">31–40</span>
+        <span class="chip c5">41–45</span>
+      </div>
+    </section>
+
+    <section class="grid" id="resultGrid"></section>
+
+    <section class="footer">
+      <details>
+        <summary>추천 방식 설명</summary>
+        <ul>
+          <li><b>상위/중위/하위 빈도 세트</b> + <b>구간(1–10…41–45) 밸런스 세트</b> + <b>혼합 가중 세트</b>를 함께 생성합니다.</li>
+          <li>랜덤이지만 “무작위 번호 생성”이 아니라 <b>출현 빈도에 비례한 가중치</b>로 뽑습니다.</li>
+          <li>세트 내 숫자는 중복 없이 6개, 오름차순 정렬.</li>
+        </ul>
+      </details>
+    </section>
+  </div>
+
+  <script type="module" src="./assets/app.js"></script>
+</body>
+</html>
